@@ -4,8 +4,8 @@ import data from './data.js';
 const app = express();
 
 app.get('/api/products/:id', (req, res) => {
-    const product = data.products.find((x) => x._id === req.params.id);
-    if (product) {
+    const productId = Number(req.params.id); // Convertir en nombre
+    const product = data.products.find((x) => x._id === productId);    if (product) {
       res.send(product);
     } else {
       res.status(404).send({ message: 'Product Not Found' });
